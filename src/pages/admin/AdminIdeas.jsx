@@ -108,7 +108,7 @@ export default function AdminIdeas() {
                       {idea.content}
                     </div>
                   </td>
-                  <td>{idea.profiles?.nome} {idea.profiles?.cognome}</td>
+                  <td>{idea.profiles ? `${idea.profiles.nome} ${idea.profiles.cognome}` : 'Utente sconosciuto'}</td>
                   <td>{idea.classe}</td>
                   <td style={{ whiteSpace: 'nowrap', fontSize: '0.76rem' }}>
                     {formatDistanceToNow(new Date(idea.created_at), { addSuffix: true, locale: it })}
