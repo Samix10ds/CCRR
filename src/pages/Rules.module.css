@@ -1,0 +1,70 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+.loading { color: var(--text-3); padding: 40px; text-align: center; }
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.sub {
+  color: var(--text-2);
+  font-size: 0.88rem;
+  margin-top: 4px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  counter-reset: rules;
+}
+
+.card {
+  display: flex;
+  gap: 18px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: border-color 0.15s;
+}
+
+.card:hover { border-color: var(--accent); }
+
+.num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.35;
+  min-width: 36px;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.ruleBody { flex: 1; }
+
+.ruleTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.ruleContent {
+  color: var(--text-2);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}

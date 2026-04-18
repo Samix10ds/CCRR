@@ -1,0 +1,189 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.titleRow {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.title {
+  font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800;
+}
+
+/* Dashboard stat cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--cc);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.statCard:hover {
+  border-color: var(--cc);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.statCard:hover::after { opacity: 1; }
+
+.statCard.urgent {
+  border-color: color-mix(in srgb, var(--cc) 40%, transparent);
+  background: color-mix(in srgb, var(--cc) 5%, var(--bg-2));
+}
+
+.statIcon { color: var(--cc); margin-bottom: 4px; }
+.statValue { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text); }
+.statLabel { font-size: 0.8rem; color: var(--text-2); font-weight: 500; }
+.statSub   { font-size: 0.74rem; color: var(--danger); font-weight: 600; }
+
+.urgentDot {
+  position: absolute; top: 12px; right: 12px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cc);
+  animation: pulse 1.4s ease infinite;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.5; }
+}
+
+/* Tabella generica admin */
+.tableWrap {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.tableHead {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tableHead h3 {
+  font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700;
+}
+
+table {
+  width: 100%; border-collapse: collapse;
+}
+
+th {
+  text-align: left; padding: 10px 16px;
+  font-size: 0.73rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 12px 16px;
+  font-size: 0.87rem;
+  color: var(--text-2);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  vertical-align: middle;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg-3); }
+
+/* Filtri */
+.filters {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 5px 14px; border-radius: 20px;
+  background: var(--bg-3); border: 1px solid var(--border);
+  color: var(--text-2); font-size: 0.8rem; cursor: pointer;
+  transition: all 0.15s; font-family: 'DM Sans', sans-serif;
+}
+.filterBtn.active {
+  background: var(--accent); color: #000;
+  border-color: var(--accent); font-weight: 600;
+}
+.filterBtn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+/* Azioni inline */
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.actionBtn {
+  padding: 5px 12px; border-radius: 7px;
+  font-size: 0.78rem; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.btnApprove { background: color-mix(in srgb,var(--success) 15%,transparent); color: var(--success); border-color: var(--success); }
+.btnApprove:hover { background: var(--success); color: #000; }
+
+.btnReject  { background: color-mix(in srgb,var(--danger) 12%,transparent); color: var(--danger); border-color: var(--danger); }
+.btnReject:hover  { background: var(--danger); color: #fff; }
+
+.btnWarn    { background: color-mix(in srgb,var(--warning) 12%,transparent); color: var(--warning); border-color: var(--warning); }
+.btnWarn:hover    { background: var(--warning); color: #000; }
+
+.btnBan     { background: color-mix(in srgb,var(--danger) 18%,transparent); color: var(--danger); border-color: var(--danger); }
+.btnBan:hover     { background: var(--danger); color: #fff; }
+
+.empty {
+  padding: 40px; text-align: center;
+  color: var(--text-3); font-size: 0.9rem;
+}
+
+.tag {
+  display: inline-block; padding: 2px 10px;
+  border-radius: 20px; font-size: 0.72rem; font-weight: 700;
+}
+.tagPending  { background: color-mix(in srgb,var(--warning) 15%,transparent); color: var(--warning); }
+.tagApproved { background: color-mix(in srgb,var(--success) 15%,transparent); color: var(--success); }
+.tagRejected { background: color-mix(in srgb,var(--danger)  15%,transparent); color: var(--danger);  }
+.tagResolved { background: color-mix(in srgb,var(--success) 15%,transparent); color: var(--success); }
+
+/* Form regole */
+.ruleForm {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.ruleFormRow { display: grid; grid-template-columns: 1fr 2fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 0.8rem; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.ruleItem {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+}
+.ruleItem:last-child { border-bottom: none; }
+.ruleNum {
+  font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800;
+  color: var(--accent); opacity: 0.4; min-width: 28px;
+}
+.ruleBody { flex: 1; }
+.ruleTitle { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.ruleContent { font-size: 0.82rem; color: var(--text-2); margin-top: 3px; }
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .ruleFormRow { grid-template-columns: 1fr; }
+}

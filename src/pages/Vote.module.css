@@ -1,0 +1,56 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.intro {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+}
+
+.title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; }
+.sub   { font-size: 0.85rem; color: var(--text-2); margin-top: 4px; }
+
+.empty {
+  text-align: center; padding: 60px 20px;
+  color: var(--text-3); display: flex; flex-direction: column; align-items: center;
+}
+
+.list { display: flex; flex-direction: column; gap: 12px; }
+
+.card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: border-color 0.15s;
+}
+.card:hover { border-color: var(--warning); }
+
+.ideaTitle { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; }
+.ideaContent { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; }
+
+.barWrap { display: flex; flex-direction: column; gap: 6px; }
+
+.bar {
+  height: 8px; background: color-mix(in srgb, var(--danger) 20%, transparent);
+  border-radius: 4px; overflow: hidden;
+}
+
+.barYes {
+  height: 100%; background: var(--success);
+  border-radius: 4px; transition: width 0.4s ease;
+}
+
+.barLabels {
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem; font-weight: 600;
+}
+
+.actions {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+}
+
+.author { font-size: 0.78rem; color: var(--text-3); }
+
+.voted { font-size: 0.82rem; color: var(--text-2); font-weight: 600; }
+
+.voteBtns { display: flex; gap: 8px; }

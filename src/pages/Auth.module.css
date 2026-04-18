@@ -1,0 +1,155 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg { position: absolute; inset: 0; pointer-events: none; }
+
+.blob1 {
+  position: absolute; top: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 15%, transparent), transparent 70%);
+  border-radius: 50%;
+}
+
+.blob2 {
+  position: absolute; bottom: -200px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%);
+  border-radius: 50%;
+}
+
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  animation: fadeUp 0.4s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header { text-align: center; margin-bottom: 28px; }
+
+.logoIcon {
+  font-size: 2.4rem; color: var(--accent);
+  display: block; margin-bottom: 8px;
+  filter: drop-shadow(var(--accent-glow));
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem; font-weight: 800;
+  letter-spacing: 0.08em; color: var(--text);
+}
+
+.sub { color: var(--text-3); font-size: 0.85rem; margin-top: 4px; }
+
+/* ── 3-tab ── */
+.tabs {
+  display: flex;
+  background: var(--bg-3);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  z-index: 1;
+  transition: color 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.tabActive { color: var(--text); font-weight: 700; }
+
+.tabSlider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(33.33% - 2.67px);
+  height: calc(100% - 8px);
+  background: var(--bg-2);
+  border-radius: 8px;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ── Form ── */
+.form { display: flex; flex-direction: column; gap: 14px; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.field label {
+  font-size: 0.8rem; font-weight: 600; color: var(--text-2);
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+.loginHint {
+  font-size: 0.78rem;
+  color: var(--text-3);
+  background: var(--bg-3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: -4px 0;
+}
+
+/* ── Admin sub-toggle ── */
+.adminToggle {
+  display: flex; background: var(--bg-3);
+  border-radius: 8px; padding: 3px; gap: 3px;
+}
+
+.adminTab {
+  flex: 1; padding: 7px; border-radius: 6px;
+  background: transparent; border: none;
+  color: var(--text-2); font-size: 0.85rem;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+
+.adminTabActive {
+  background: var(--bg-2); color: var(--text);
+  font-weight: 600; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.adminHint {
+  font-size: 0.75rem; color: var(--text-3);
+  line-height: 1.5; text-align: center;
+}
+
+.adminHint code {
+  background: var(--bg-3); padding: 1px 5px;
+  border-radius: 4px; font-size: 0.72rem; color: var(--accent);
+}
+
+@media (max-width: 420px) {
+  .card { padding: 28px 20px; }
+  .row  { grid-template-columns: 1fr; }
+}

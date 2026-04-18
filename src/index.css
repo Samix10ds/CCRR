@@ -1,0 +1,285 @@
+/* ============================================
+   CCRR COMMUNITY - GLOBAL STYLES
+   Fonts: Syne (headings) + DM Sans (body)
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- TEMA: DARK (default) ---- */
+:root,
+[data-theme="dark"] {
+  --bg:        #0a0a0f;
+  --bg-2:      #111118;
+  --bg-3:      #1a1a24;
+  --border:    #2a2a38;
+  --text:      #e8e8f0;
+  --text-2:    #9090a8;
+  --text-3:    #5a5a72;
+  --accent:    #00d4aa;
+  --accent-2:  #00a882;
+  --accent-glow: 0 0 20px rgba(0,212,170,0.25);
+  --danger:    #ff4d6d;
+  --warning:   #ffb830;
+  --info:      #4d9eff;
+  --success:   #00d4aa;
+  /* cartellini */
+  --card-green:  #00d4aa;
+  --card-yellow: #ffb830;
+  --card-orange: #ff8c42;
+  --card-red:    #ff4d6d;
+  /* sidebar */
+  --sidebar-w: 260px;
+}
+
+/* ---- TEMA: LIGHT ---- */
+[data-theme="light"] {
+  --bg:        #f5f5f8;
+  --bg-2:      #ffffff;
+  --bg-3:      #ebebf2;
+  --border:    #d8d8e8;
+  --text:      #111118;
+  --text-2:    #555568;
+  --text-3:    #9090a8;
+  --accent:    #007a62;
+  --accent-2:  #005a48;
+  --accent-glow: 0 0 20px rgba(0,122,98,0.15);
+  --danger:    #d92f50;
+  --warning:   #c48400;
+  --info:      #1a6fd4;
+  --success:   #007a62;
+  --card-green:  #007a62;
+  --card-yellow: #c48400;
+  --card-orange: #c05a10;
+  --card-red:    #d92f50;
+}
+
+/* ---- TEMA: COLORE FESTA ---- */
+[data-theme="color_festa"] {
+  --bg:        #0d0520;
+  --bg-2:      #160830;
+  --bg-3:      #200d40;
+  --border:    #3d1a6e;
+  --text:      #f0e8ff;
+  --text-2:    #b090d0;
+  --text-3:    #7050a0;
+  --accent:    #c060ff;
+  --accent-2:  #9040d0;
+  --accent-glow: 0 0 24px rgba(192,96,255,0.35);
+  --danger:    #ff4d6d;
+  --warning:   #ffb830;
+  --info:      #60c0ff;
+  --success:   #60ffb0;
+  --card-green:  #60ffb0;
+  --card-yellow: #ffda60;
+  --card-orange: #ff9060;
+  --card-red:    #ff4d6d;
+}
+
+/* ---- TEMA: NATALE ---- */
+[data-theme="color_natale"] {
+  --bg:        #0a1a0a;
+  --bg-2:      #0f2010;
+  --bg-3:      #163018;
+  --border:    #254025;
+  --text:      #e8f5e8;
+  --text-2:    #90b890;
+  --text-3:    #507050;
+  --accent:    #ff3c3c;
+  --accent-2:  #cc2020;
+  --accent-glow: 0 0 20px rgba(255,60,60,0.3);
+  --danger:    #ff3c3c;
+  --warning:   #ffcc00;
+  --info:      #88ccff;
+  --success:   #44cc44;
+  --card-green:  #44cc44;
+  --card-yellow: #ffcc00;
+  --card-orange: #ff8822;
+  --card-red:    #ff3c3c;
+}
+
+/* ---- TEMA: PASQUA ---- */
+[data-theme="color_pasqua"] {
+  --bg:        #0e0a14;
+  --bg-2:      #160f20;
+  --bg-3:      #1e1630;
+  --border:    #362850;
+  --text:      #f0eaff;
+  --text-2:    #c0a8e8;
+  --text-3:    #806898;
+  --accent:    #e870d0;
+  --accent-2:  #b850a8;
+  --accent-glow: 0 0 20px rgba(232,112,208,0.3);
+  --danger:    #ff5080;
+  --warning:   #f0c040;
+  --info:      #70c8f0;
+  --success:   #70e8a0;
+  --card-green:  #70e8a0;
+  --card-yellow: #f0c040;
+  --card-orange: #f08050;
+  --card-red:    #ff5080;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+input, textarea, select {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,170,0.12);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-3);
+}
+
+select option {
+  background: var(--bg-2);
+  color: var(--text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+.page-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* ============================================
+   CARD BASE
+   ============================================ */
+
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow);
+}
+
+/* ============================================
+   UTILITY
+   ============================================ */
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: 8px; }
+.gap-3 { gap: 12px; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+.mt-2 { margin-top: 8px; }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.mb-4 { margin-bottom: 16px; }
+.w-full { width: 100%; }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.text-muted { color: var(--text-2); }
+.text-accent { color: var(--accent); }
+.text-danger { color: var(--danger); }
+.font-bold { font-weight: 700; }
+.rounded { border-radius: 8px; }
+.rounded-full { border-radius: 9999px; }
+
+/* Animazione fade-in pagine */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter {
+  animation: fadeUp 0.35s ease forwards;
+}
+
+/* Pulse per notifiche */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}

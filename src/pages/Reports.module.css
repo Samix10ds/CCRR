@@ -1,0 +1,80 @@
+/* Reports.module.css */
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 22px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.cardHeader h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.form { display: flex; flex-direction: column; gap: 14px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sectionTitle {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.list { display: flex; flex-direction: column; gap: 8px; }
+
+.reportItem {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.reportHead {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.time { font-size: 0.76rem; color: var(--text-3); }
+
+.target {
+  font-size: 0.82rem;
+  color: var(--text-2);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.reason {
+  font-size: 0.88rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.adminNote {
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-top: 6px;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-radius: 8px;
+}

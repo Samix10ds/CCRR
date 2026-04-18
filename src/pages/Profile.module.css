@@ -1,0 +1,94 @@
+.page { display: flex; flex-direction: column; gap: 24px; }
+
+.profileCard {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px;
+}
+
+.avatar {
+  width: 64px; height: 64px; border-radius: 16px;
+  background: color-mix(in srgb, var(--accent) 20%, var(--bg));
+  color: var(--accent); font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  text-transform: uppercase;
+  border: 2px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.name {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800;
+}
+
+.classe {
+  font-size: 0.82rem; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+.section {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 22px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.sectionTitle {
+  font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700;
+  display: flex; align-items: center;
+}
+
+.themeGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px;
+}
+
+.themeBtn {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 14px 10px; border-radius: 12px;
+  background: var(--bg-3); border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.15s; position: relative;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.themeBtn:hover { border-color: var(--accent); }
+
+.themeBtn.themeActive {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.themeEmoji { font-size: 1.4rem; }
+.themeLabel { font-size: 0.76rem; color: var(--text-2); font-weight: 500; }
+
+.themeCheck {
+  position: absolute; top: 6px; right: 8px;
+  color: var(--accent); font-size: 0.7rem; font-weight: 700;
+}
+
+/* Warnings */
+.warningList { display: flex; flex-direction: column; gap: 8px; }
+
+.warningItem {
+  border-left: 3px solid var(--wc);
+  background: color-mix(in srgb, var(--wc) 6%, transparent);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+}
+
+.warningHead {
+  display: flex; justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.warningCard {
+  font-size: 0.75rem; font-weight: 800; color: var(--wc);
+  letter-spacing: 0.06em;
+}
+
+.warningTime { font-size: 0.75rem; color: var(--text-3); }
+
+.warningReason { font-size: 0.87rem; color: var(--text-2); }
+
+.autoTag {
+  display: inline-block; margin-top: 6px;
+  font-size: 0.72rem; color: var(--text-3);
+  background: var(--bg-3); border-radius: 6px; padding: 2px 8px;
+}

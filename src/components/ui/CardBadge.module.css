@@ -1,0 +1,36 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--card-color);
+  box-shadow: 0 0 6px var(--card-color);
+  flex-shrink: 0;
+}
+
+.badge.sm .dot { width: 8px; height: 8px; }
+.badge.lg .dot { width: 13px; height: 13px; }
+
+.label {
+  font-size: 0.8rem;
+  color: var(--card-color);
+  font-weight: 500;
+}
+
+.full {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--card-color);
+  background: color-mix(in srgb, var(--card-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color) 30%, transparent);
+}
