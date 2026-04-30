@@ -32,7 +32,7 @@ export function checkText(text) {
     const pattern = `(^|[\\s.,!?;:'"()\\[\\]{}<>/\\\\-])${normalizedWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([\\s.,!?;:'"()\\[\\]{}<>/\\\\-]|$)`
     const regex = new RegExp(pattern, 'i')
     // Controlla anche substring pura per parole composte
-    return regex.test(normalized) || normalized.includes(normalizedWord)
+    return regex.test(normalized)
   })
 
   return { flagged: found.length > 0, words: found }

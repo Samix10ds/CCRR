@@ -30,7 +30,7 @@ export default function HomePage() {
   }, [])
 
   const QUICK_LINKS = [
-    { to: '/ideas/new', icon: Lightbulb, label: 'Invia un\'idea', color: 'var(--accent)',   desc: 'Proponi qualcosa alla community' },
+    { to: '/ideas', icon: Lightbulb, label: 'Invia un\'idea', color: 'var(--accent)',   desc: 'Proponi qualcosa alla community' },
     { to: '/rules',     icon: BookOpen,  label: 'Regole',         color: 'var(--info)',    desc: 'Leggi le regole della community' },
     { to: '/vote',      icon: Vote,      label: 'Vota',           color: 'var(--warning)', desc: 'Vota le idee in sospeso' },
     { to: '/reports',   icon: Flag,      label: 'Segnala',        color: 'var(--danger)',  desc: 'Segnala un comportamento' },

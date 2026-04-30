@@ -21,7 +21,7 @@ export default function ReportsPage() {
       .neq('id', user?.id).then(({ data }) => setUsers(data || []))
 
     // Carica segnalazioni dell'utente
-    supabase.from('reports').select('*,profiles!reported_user_id(nome,cognome)')
+    supabase.from('reports').select('*, profiles:reported_user_id(nome,cognome)')
       .eq('reporter_id', user?.id)
       .order('created_at', { ascending: false })
       .then(({ data }) => setMyReports(data || []))

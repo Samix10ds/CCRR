@@ -152,7 +152,7 @@ export default function AdminUsers() {
                         className={`${styles.actionBtn} ${styles.btnWarn}`}
                         onClick={() => {
                           setWarnModal(u)
-                          setWarnForm({ card: 'yellow', reason: '', banMins: 30 })
+                          setWarnForm({ card: 'yellow', reason: '', banMins: 30, appealEmail: '' })
                         }}
                       >
                         Cartellino
