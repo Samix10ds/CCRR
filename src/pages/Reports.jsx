@@ -44,7 +44,7 @@ export default function ReportsPage() {
     setForm({ reported_user_id: '', reason: '' })
 
     // Ricarica
-    const { data } = await supabase.from('reports').select('*,profiles!reported_user_id(nome,cognome)')
+    const { data } = await supabase.from('reports').select('*, profiles:reported_user_id(nome,cognome)')
       .eq('reporter_id', user.id).order('created_at', { ascending: false })
     setMyReports(data || [])
   }

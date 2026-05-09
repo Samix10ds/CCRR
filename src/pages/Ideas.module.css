@@ -155,3 +155,62 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
+/* Immagine allegata all'idea */
+.ideaImage {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+}
+
+.uploadBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text-3);
+  cursor: pointer;
+  font-size: 0.88rem;
+  transition: all 0.15s;
+  justify-content: center;
+}
+.uploadBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.previewWrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.preview {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.removeImg {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}

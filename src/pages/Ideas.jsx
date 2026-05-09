@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/AuthContext'
 import { checkText, applyAutoBan } from '../lib/automod'
 import { notifyAdminNewIdea } from '../lib/notifications'
 import Button from '../components/ui/Button'
 import Modal from '../components/ui/Modal'
-import { ThumbsUp, ThumbsDown, Plus, Lightbulb } from 'lucide-react'
+import { ThumbsUp, ThumbsDown, Plus, Lightbulb, Image, X } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
 import { it } from 'date-fns/locale'
 import toast from 'react-hot-toast'
@@ -22,12 +22,14 @@ export default function IdeasPage() {
   const [showNew, setShowNew] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [form, setForm] = useState({ title: '', content: '' })
-  const [myVotes, setMyVotes] = useState({}) // ideaId -> vote_type
+  const [imageFile, setImageFile] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
+  const [myVotes, setMyVotes] = useState({})
 
   async function fetchIdeas() {
     let q = supabase
       .from('ideas')
-      .select('*, profiles(nome,cognome,classe)')
+      .select('*, profiles:author_id(nome,cognome,classe)')
       .eq('status', 'approved')
       .order('created_at', { ascending: false })
 
@@ -80,6 +82,29 @@ export default function IdeasPage() {
     toast.success('Voto registrato!')
   }
 
+  function handleImageChange(e) {
+    const file = e.target.files[0]
+    if (!file) return
+    if (file.size > 3 * 1024 * 1024) { toast.error('Immagine max 3MB'); return }
+    setImageFile(file)
+    setImagePreview(URL.createObjectURL(file))
+  }
+
+  function removeImage() {
+    setImageFile(null)
+    setImagePreview(null)
+  }
+
+  async function uploadImage() {
+    if (!imageFile) return null
+    const ext  = imageFile.name.split('.').pop()
+    const path = `ideas/${user.id}/${Date.now()}.${ext}`
+    const { error } = await supabase.storage.from('ccrr-images').upload(path, imageFile)
+    if (error) { toast.error('Errore upload immagine'); return null }
+    const { data } = supabase.storage.from('ccrr-images').getPublicUrl(path)
+    return data.publicUrl
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
     if (!form.title.trim() || !form.content.trim()) {
@@ -101,12 +126,16 @@ export default function IdeasPage() {
     }
 
     setSubmitting(true)
+    const imageUrl = imageFile ? await uploadImage() : null
+
     const { data, error } = await supabase.from('ideas').insert({
-      user_id: user.id,
-      classe: profile.classe,
-      title: form.title.trim(),
-      content: form.content.trim(),
-      status: 'pending'
+      user_id:   user.id,
+      author_id: user.id,
+      classe:    profile.classe,
+      title:     form.title.trim(),
+      content:   form.content.trim(),
+      image_url: imageUrl,
+      status:    'pending'
     }).select().single()
 
     if (error) { toast.error(error.message); setSubmitting(false); return }
@@ -114,6 +143,7 @@ export default function IdeasPage() {
     await notifyAdminNewIdea(data.id, data.title, `${profile.nome} ${profile.cognome}`)
     toast.success('Idea inviata! Aspetta l\'approvazione.')
     setForm({ title: '', content: '' })
+    setImageFile(null); setImagePreview(null)
     setShowNew(false)
     setSubmitting(false)
   }
@@ -161,6 +191,10 @@ export default function IdeasPage() {
               </div>
               <h3 className={styles.cardTitle}>{idea.title}</h3>
               <p className={styles.cardContent}>{idea.content}</p>
+              {idea.image_url && (
+                <img src={idea.image_url} alt="Allegato" className={styles.ideaImage}
+                  onError={e => e.target.style.display = 'none'} />
+              )}
               <div className={styles.cardFoot}>
                 <span className={styles.author}>
                   {idea.profiles?.nome} {idea.profiles?.cognome}
@@ -188,7 +222,7 @@ export default function IdeasPage() {
       )}
 
       {/* Modal nuova idea */}
-      <Modal open={showNew} onClose={() => setShowNew(false)} title="💡 Invia un'idea">
+      <Modal open={showNew} onClose={() => { setShowNew(false); removeImage() }} title="💡 Invia un'idea">
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div className={styles.field}>
             <label>Titolo</label>
@@ -211,8 +245,26 @@ export default function IdeasPage() {
               required
             />
           </div>
+          <div className={styles.field}>
+            <label>Immagine (opzionale, max 3MB)</label>
+            {imagePreview ? (
+              <div className={styles.previewWrap}>
+                <img src={imagePreview} alt="preview" className={styles.preview} />
+                <button type="button" className={styles.removeImg} onClick={removeImage}>
+                  <X size={14} /> Rimuovi
+                </button>
+              </div>
+            ) : (
+              <label className={styles.uploadBtn}>
+                <Image size={16} />
+                <span>Allega immagine</span>
+                <input type="file" accept="image/*" style={{ display: 'none' }}
+                  onChange={handleImageChange} />
+              </label>
+            )}
+          </div>
           <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
-            <Button variant="secondary" onClick={() => setShowNew(false)} type="button">Annulla</Button>
+            <Button variant="secondary" onClick={() => { setShowNew(false); removeImage() }} type="button">Annulla</Button>
             <Button type="submit" loading={submitting}>Invia</Button>
           </div>
         </form>

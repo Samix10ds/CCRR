@@ -22,7 +22,7 @@ export default function AdminIdeas() {
     setLoading(true)
     const { data } = await supabase
       .from('ideas')
-      .select('*, profiles(nome,cognome,classe)')
+      .select('*, profiles:author_id(nome,cognome,classe)')
       .eq('status', filter)
       .order('created_at', { ascending: false })
     setIdeas(data || [])
@@ -37,7 +37,7 @@ export default function AdminIdeas() {
       reviewed_at: new Date().toISOString()
     }).eq('id', idea.id)
 
-    await notifyIdeaResult(idea.user_id, idea.title, true)
+    await notifyIdeaResult(idea.author_id || idea.user_id, idea.title, true)
     toast.success('Idea approvata!')
     load()
   }
@@ -50,7 +50,7 @@ export default function AdminIdeas() {
       reviewed_at: new Date().toISOString()
     }).eq('id', rejectModal.id)
 
-    await notifyIdeaResult(rejectModal.user_id, rejectModal.title, false, rejectNote)
+    await notifyIdeaResult(rejectModal.author_id || rejectModal.user_id, rejectModal.title, false, rejectNote)
     toast.success('Idea rifiutata.')
     setRejectModal(null)
     setRejectNote('')
