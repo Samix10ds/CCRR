@@ -11,6 +11,9 @@ import AdminGuard from './components/layout/AdminGuard'
 import AuthPage       from './pages/Auth'
 import HomePage       from './pages/Home'
 import IdeasPage      from './pages/Ideas'
+import ApprovedPage   from './pages/Approved'
+import LeaderboardPage from './pages/Leaderboard'
+import AiAssistantPage from './pages/AiAssistant'
 import RulesPage      from './pages/Rules'
 import VotePage       from './pages/Vote'
 import ReportsPage    from './pages/Reports'
@@ -50,6 +53,9 @@ function AppContent() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="ideas"   element={<IdeasPage />} />
+          <Route path="approved" element={<ApprovedPage />} />
+          <Route path="leaderboard" element={<LeaderboardPage />} />
+          <Route path="ai"      element={<AiAssistantPage />} />
           <Route path="rules"   element={<RulesPage />} />
           <Route path="vote"    element={<VotePage />} />
           <Route path="reports" element={<ReportsPage />} />

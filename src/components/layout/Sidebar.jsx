@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
   Home, Lightbulb, BookOpen, User, Shield,
-  LogOut, Menu, X, ChevronRight, Flag, Vote
+  LogOut, Menu, X, ChevronRight, Flag, Vote, Trophy, Sparkles
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import CardBadge from '../ui/CardBadge'
@@ -11,6 +11,9 @@ import styles from './Sidebar.module.css'
 const NAV_USER = [
   { to: '/',          icon: Home,      label: 'Home'       },
   { to: '/ideas',     icon: Lightbulb, label: 'Idee'       },
+  { to: '/approved',  icon: Lightbulb, label: 'Approvate'  },
+  { to: '/leaderboard', icon: Trophy,  label: 'Classifica' },
+  { to: '/ai',        icon: Sparkles,  label: 'AI Brainstorm' },
   { to: '/rules',     icon: BookOpen,  label: 'Regole'     },
   { to: '/vote',      icon: Vote,      label: 'Votazioni'  },
   { to: '/reports',   icon: Flag,      label: 'Segnalazioni' },
