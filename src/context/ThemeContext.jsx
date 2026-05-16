@@ -33,11 +33,11 @@ export const THEMES = [
 export function getTimeRank(joinedAt) {
   if (!joinedAt) return null
   const days = Math.floor((Date.now() - new Date(joinedAt)) / 86400000)
-  if (days >= 365) return { label: 'Veterano',  emoji: '🏆', color: '#ffb830' }
-  if (days >= 180) return { label: 'Senior',    emoji: '⭐', color: '#00d4aa' }
-  if (days >= 60)  return { label: 'Membro',    emoji: '🎖️', color: '#4d9eff' }
-  if (days >= 14)  return { label: 'Nuovo',     emoji: '🌱', color: '#80b880' }
-  return               { label: 'Novellino', emoji: '👶', color: '#9090a8' }
+  if (days >= 365) return { label: 'Veterano',  emoji: '🏆', color: '#ffb830', next: null,       daysLeft: 0 }
+  if (days >= 180) return { label: 'Senior',    emoji: '⭐', color: '#00d4aa', next: 'Veterano', daysLeft: 365 - days }
+  if (days >= 60)  return { label: 'Membro',    emoji: '🎖️', color: '#4d9eff', next: 'Senior',   daysLeft: 180 - days }
+  if (days >= 14)  return { label: 'Nuovo',     emoji: '🌱', color: '#80b880', next: 'Membro',   daysLeft: 60 - days }
+  return               { label: 'Novellino', emoji: '👶', color: '#9090a8', next: 'Nuovo',    daysLeft: 14 - days }
 }
 
 export const ROLE_BADGES = {
